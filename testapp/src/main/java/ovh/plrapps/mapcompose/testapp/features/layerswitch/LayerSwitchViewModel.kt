@@ -32,18 +32,7 @@ class LayerSwitchViewModel(application: Application) : AndroidViewModel(applicat
         }
     )
 
-    init {
-        viewModelScope.launch {
-            while (true) {
-                delay(2000)
-                changeMapType()
-                delay(200)
-                changeMapType()
-            }
-        }
-    }
-
-    private fun changeMapType() {
+    fun changeMapType() {
         type = ((0..2) - type).random()
         val tileStreamProvider = makeTileStreamProvider(appContext, type)
         currentLayerId?.also { id ->
@@ -55,7 +44,7 @@ class LayerSwitchViewModel(application: Application) : AndroidViewModel(applicat
         /* Pay attention to how type is captured and immutable in the context of the TileStreamProvider */
         return TileStreamProvider { row, col, _ ->
             runCatching {
-                Thread.sleep((100L..200L).random())
+                Thread.sleep((1000L..2000L).random())
                 appContext.assets?.open("tiles/test/tile_${type}_${col}_$row.png")
             }.getOrNull()
         }
