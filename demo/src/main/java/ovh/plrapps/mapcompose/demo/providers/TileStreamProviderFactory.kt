@@ -6,7 +6,7 @@ import ovh.plrapps.mapcompose.core.TileStreamProvider
 fun makeTileStreamProvider(appContext: Context) =
     TileStreamProvider { row, col, zoomLvl ->
         try {
-            appContext.assets?.open("tiles/mont_blanc/$zoomLvl/$row/$col.jpg")
+            appContext.assets?.open("tiles/floor_862/$zoomLvl/tile_${col}_${row}.png")
         } catch (e: Exception) {
             null
         }
