@@ -16,9 +16,8 @@ class SimpleDemoVM(application: Application) : AndroidViewModel(application) {
     private val tileStreamProvider = makeTileStreamProvider(appContext)
 
     val state: MapState by mutableStateOf(
-        MapState(4, 5760, 3840) {
-            highFidelityColors(true)
-            maxScale(40f)
+        MapState(4, 3840, 4096) {
+            maxScale(4f)
             scroll(0.5, 0.5)
             scale(0.0f)
         }.apply {

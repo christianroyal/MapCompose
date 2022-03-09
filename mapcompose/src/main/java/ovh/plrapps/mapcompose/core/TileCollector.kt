@@ -1,9 +1,8 @@
 package ovh.plrapps.mapcompose.core
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
+import android.graphics.*
+import android.graphics.ColorSpace.ILLUMINANT_D65
+import android.graphics.PixelFormat.RGBA_F16
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
@@ -93,6 +92,7 @@ internal class TileCollector(
         val bitmapLoadingOptionsForLayer = layerIds.associateWith {
             BitmapFactory.Options().apply {
                 inPreferredConfig = bitmapConfig
+                inPreferredColorSpace
             }
         }
         val bitmapForLayer = layerIds.associateWith {

@@ -8,6 +8,7 @@ fun makeTileStreamProvider(appContext: Context) =
         try {
             appContext.assets?.open("tiles/floor_862/$zoomLvl/tile_${col}_${row}.png")
         } catch (e: Exception) {
+//            println("xxxxx fail to get tile $zoomLvl/$col/$row")
             null
         }
     }
